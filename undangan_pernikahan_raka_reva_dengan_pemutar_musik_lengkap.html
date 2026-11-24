@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan — Raka Ardiansyah &amp; Reva Nurajifa</title>
+
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Alex Brush, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF6F0',
+            creamDark: '#F2EAE0',
+            terracotta: '#B55D32',
+            terracottaDark: '#8F431E',
+            rust: '#9C4A23',
+            gold: '#C59B52',
+            goldLight: '#E3C78D',
+            charcoal: '#2E2621',
+            muted: '#6E5F56'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Alex Brush"', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            card: '0 14px 36px -10px rgba(143, 67, 30, 0.12), 0 4px 12px -4px rgba(46, 38, 33, 0.06)',
+            soft: '0 8px 24px -6px rgba(46, 38, 33, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF6F0;
+      color: #2E2621;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(181, 93, 50, 0.07) 0%, transparent 38%),
+        radial-gradient(circle at 88% 22%, rgba(197, 155, 82, 0.08) 0%, transparent 42%),
+        radial-gradient(circle at 20% 80%, rgba(181, 93, 50, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(156, 74, 35, 0.07) 0%, transparent 45%);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(0.8deg); }
+    }
+
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes eqBarBounce {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+
+    .animate-spin-disc {
+      animation: spinDisc 7s linear infinite;
+    }
+
+    .animate-float-slow {
+      animation: floatSlow 7s ease-in-out infinite;
+    }
+
+    .eq-bar {
+      transform-origin: bottom;
+      transform: scaleY(0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .eq-active .eq-bar:nth-child(1) {
+      animation: eqBarBounce 0.75s ease-in-out infinite;
+    }
+    .eq-active .eq-bar:nth-child(2) {
+      animation: eqBarBounce 0.55s ease-in-out 0.18s infinite;
+    }
+    .eq-active .eq-bar:nth-child(3) {
+      animation: eqBarBounce 0.85s ease-in-out 0.32s infinite;
+    }
+    .eq-active .eq-bar:nth-child(4) {
+      animation: eqBarBounce 0.65s ease-in-out 0.1s infinite;
+    }
+
+    /* Custom Range Slider untuk Volume Musik */
+    input[type='range'].wedding-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(197, 155, 82, 0.32);
+      height: 6px;
+      border-radius: 9999px;
+      outline: none;
+    }
+
+    input[type='range'].wedding-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 9999px;
+      background: #B55D32;
+      border: 2px solid #FAF6F0;
+      box-shadow: 0 2px 5px rgba(46, 38, 33, 0.25);
+      cursor: pointer;
+    }
+
+    input[type='range'].wedding-slider::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 9999px;
+      background: #B55D32;
+      border: 2px solid #FAF6F0;
+      box-shadow: 0 2px 5px rgba(46, 38, 33, 0.25);
+      cursor: pointer;
+    }
+
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wishes-scroll::-webkit-scrollbar,
+    .music-popover-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .wishes-scroll::-webkit-scrollbar-track,
+    .music-popover-scroll::-webkit-scrollbar-track {
+      background: #F2EAE0;
+      border-radius: 9999px;
+    }
+    .wishes-scroll::-webkit-scrollbar-thumb,
+    .music-popover-scroll::-webkit-scrollbar-thumb {
+      background: rgba(181, 93, 50, 0.35);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-terracotta/20 selection:text-terracottaDark">
+
+  <!-- ===================================================================== -->
+  <!-- FLOATING WEDDING MUSIC PLAYER WIDGET (POJOK KANAN BAWAH)              -->
+  <!-- ===================================================================== -->
+  <div id="music-player-widget" class="fixed bottom-4 sm:bottom-5 right-3 sm:right-6 z-40 flex flex-col items-end gap-2.5 max-w-[calc(100vw-1.5rem)]">
+    <!-- Elemen Audio HTML5 untuk MP3 Lokal maupun Link URL Eksternal -->
+    <audio id="custom-bg-audio" loop preload="auto" crossorigin="anonymous"></audio>
+
+    <!-- Popover Pengaturan Pemutar Musik Lengkap -->
+    <div
+      id="music-settings-popover"
+      class="hidden w-80 sm:w-96 max-h-[78vh] overflow-y-auto music-popover-scroll bg-cream/95 backdrop-blur-md border border-gold/65 rounded-3xl p-4 sm:p-5 shadow-2xl text-left space-y-4"
+    >
+      <!-- Header Popover -->
+      <div class="flex items-center justify-between border-b border-gold/30 pb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-terracotta"></span>
+          <span class="text-xs font-bold uppercase tracking-wider text-terracottaDark">
+            Pemutar Musik Pernikahan
+          </span>
+        </div>
+        <button
+          type="button"
+          id="btn-close-music-settings"
+          aria-label="Tutup pengaturan musik"
+          class="text-muted hover:text-charcoal text-xs font-semibold px-2 py-1 rounded-xl hover:bg-creamDark transition cursor-pointer"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Status Trek Aktif + Kontrol Play/Pause + Slider Volume -->
+      <div class="bg-creamDark/85 border border-gold/40 rounded-2xl p-3.5 space-y-3">
+        <div class="flex items-center justify-between gap-2">
+          <div class="min-w-0">
+            <p class="text-[10px] uppercase tracking-widest text-muted">Sedang Dipilih</p>
+            <p id="popover-active-track-name" class="font-serif text-base font-bold text-charcoal truncate">
+              Canon in D — Piano &amp; Strings
+            </p>
+          </div>
+          <button
+            type="button"
+            id="btn-popover-play-pause"
+            class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-terracotta hover:bg-terracottaDark text-cream text-xs font-semibold shadow-sm transition cursor-pointer"
+          >
+            <span id="popover-play-icon">▶</span>
+            <span id="popover-play-text">Putar</span>
+          </button>
+        </div>
+
+        <!-- Pengatur Volume -->
+        <div class="flex items-center gap-2.5 pt-1">
+          <svg class="w-4 h-4 text-terracottaDark shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <input
+            type="range"
+            id="music-volume-slider"
+            min="0"
+            max="100"
+            value="75"
+            aria-label="Volume musik latar"
+            class="wedding-slider flex-1"
+          />
+          <span id="music-volume-label" class="text-[11px] font-semibold text-charcoal tabular-nums w-9 text-right">
+            75%
+          </span>
+        </div>
+      </div>
+
+      <!-- 1. Koleksi 3 Instrumen Bawaan (Web Audio API) -->
+      <div class="space-y-2">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-charcoal">
+          1. Pilih Instrumen Bawaan (Tanpa Internet)
+        </p>
+        <div class="space-y-1.5" id="builtin-tracks-list">
+          <button
+            type="button"
+            data-track-id="canon"
+            class="builtin-track-btn w-full text-left px-3 py-2.5 rounded-xl border border-terracotta bg-terracotta/12 text-charcoal transition flex items-center justify-between gap-2 cursor-pointer"
+          >
+            <div class="min-w-0">
+              <p class="text-xs font-semibold text-terracottaDark truncate">Canon in D — Piano &amp; Strings</p>
+              <p class="text-[10px] text-muted truncate">Melodi Pachelbel's Canon romantis &amp; hangat</p>
+            </div>
+            <span class="track-badge text-[10px] font-bold px-2 py-0.5 rounded-full bg-terracotta text-cream shrink-0">Aktif</span>
+          </button>
+
+          <button
+            type="button"
+            data-track-id="akad"
+            class="builtin-track-btn w-full text-left px-3 py-2.5 rounded-xl border border-gold/45 bg-cream hover:bg-creamDark/80 text-charcoal transition flex items-center justify-between gap-2 cursor-pointer"
+          >
+            <div class="min-w-0">
+              <p class="text-xs font-semibold text-charcoal truncate">Akad Sakral — Harpa &amp; Nuansa Islami</p>
+              <p class="text-[10px] text-muted truncate">Petikan harpa lembut &amp; syahdu penuh khidmat</p>
+            </div>
+            <span class="track-badge hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-terracotta text-cream shrink-0">Aktif</span>
+          </button>
+
+          <button
+            type="button"
+            data-track-id="cinta"
+            class="builtin-track-btn w-full text-left px-3 py-2.5 rounded-xl border border-gold/45 bg-cream hover:bg-creamDark/80 text-charcoal transition flex items-center justify-between gap-2 cursor-pointer"
+          >
+            <div class="min-w-0">
+              <p class="text-xs font-semibold text-charcoal truncate">Cinta Sejati — Kotak Musik &amp; Piano</p>
+              <p class="text-[10px] text-muted truncate">Alunan kotak musik bertempo pelan &amp; manis</p>
+            </div>
+            <span class="track-badge hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-terracotta text-cream shrink-0">Aktif</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Upload File MP3/Audio Lokal dari Perangkat -->
+      <div class="space-y-2 pt-2 border-t border-gold/30">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-charcoal">
+          2. Unggah Lagu dari HP / Laptop (.mp3 / .m4a / .wav)
+        </p>
+        <label
+          for="local-audio-file-input"
+          class="flex items-center justify-center gap-2 w-full px-3.5 py-2.5 rounded-xl border border-dashed border-terracotta/70 bg-creamDark/60 hover:bg-terracotta/10 text-terracottaDark text-xs font-semibold cursor-pointer transition"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          <span id="local-file-label-text" class="truncate">Pilih File Lagu dari Perangkat...</span>
+        </label>
+        <input
+          type="file"
+          id="local-audio-file-input"
+          accept="audio/*,.mp3,.m4a,.wav,.ogg"
+          class="hidden"
+        />
+      </div>
+
+      <!-- 3. Input Link URL MP3 Kustom -->
+      <div class="space-y-2 pt-2 border-t border-gold/30">
+        <label for="custom-mp3-url-input" class="block text-[11px] font-semibold uppercase tracking-wider text-charcoal">
+          3. Atau Tempel Link URL File .MP3 Langsung
+        </label>
+        <input
+          type="url"
+          id="custom-mp3-url-input"
+          placeholder="https://contoh.com/lagu-pernikahan.mp3"
+          class="w-full px-3 py-2 rounded-xl bg-creamDark/70 border border-gold/50 focus:border-terracotta focus:outline-none text-xs text-charcoal placeholder:text-muted/70"
+        />
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="btn-apply-custom-mp3"
+            class="flex-1 py-2 px-3 rounded-xl bg-terracotta hover:bg-terracottaDark text-cream text-xs font-semibold transition cursor-pointer"
+          >
+            Terapkan Link MP3
+          </button>
+          <button
+            type="button"
+            id="btn-reset-builtin-music"
+            class="py-2 px-3 rounded-xl border border-gold/60 bg-creamDark hover:bg-gold/20 text-charcoal text-xs font-semibold transition cursor-pointer"
+          >
+            Reset Bawaan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bar Kontrol Mengambang Utama -->
+    <div class="flex items-center gap-2">
+      <!-- Tombol Pengaturan Lagu / Koleksi Instrumen -->
+      <button
+        type="button"
+        id="btn-toggle-music-settings"
+        title="Pilih lagu, unggah MP3, atau atur volume"
+        aria-label="Buka pengaturan musik pernikahan"
+        class="h-11 px-3 rounded-full bg-cream/95 backdrop-blur-md border border-gold/70 shadow-lg flex items-center gap-1.5 text-terracottaDark hover:bg-creamDark active:scale-95 transition cursor-pointer"
+      >
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        </svg>
+        <span class="text-[11px] font-semibold hidden sm:inline">Pilih Lagu</span>
+      </button>
+
+      <!-- Tombol Utama Play / Pause Piringan Musik + Equalizer -->
+      <button
+        type="button"
+        id="btn-music-toggle"
+        aria-label="Putar atau jeda musik latar"
+        aria-pressed="false"
+        class="group flex items-center gap-2.5 pl-2 pr-3.5 py-1.5 rounded-full bg-gradient-to-r from-terracotta to-terracottaDark text-cream border border-goldLight/70 shadow-xl hover:shadow-2xl active:scale-95 transition cursor-pointer"
+      >
+        <span
+          id="music-disc-icon"
+          class="w-8 h-8 rounded-full bg-cream text-terracottaDark flex items-center justify-center shadow-inner border border-gold/70 shrink-0"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+          </svg>
+        </span>
+
+        <span class="text-left leading-tight max-w-[130px] sm:max-w-[165px]">
+          <span id="music-status-label" class="block text-[11px] font-semibold tracking-wide truncate">Putar Musik</span>
+          <span id="music-track-subtitle" class="block text-[10px] text-cream/85 truncate">Canon in D</span>
+        </span>
+
+        <!-- Indikator Animasi Equalizer 4 Bar -->
+        <span id="music-eq-bars" class="flex items-end gap-0.5 h-3.5 pl-1 shrink-0" aria-hidden="true">
+          <span class="eq-bar w-0.5 h-full bg-goldLight rounded-full"></span>
+          <span class="eq-bar w-0.5 h-full bg-goldLight rounded-full"></span>
+          <span class="eq-bar w-0.5 h-full bg-goldLight rounded-full"></span>
+          <span class="eq-bar w-0.5 h-full bg-goldLight rounded-full"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast / Status Message Banner (replaces alert()) -->
+  <div
+    id="toast-banner"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 w-[92%] max-w-md"
+  >
+    <div class="bg-charcoal text-cream px-4 py-3 rounded-2xl shadow-xl border border-gold/40 flex items-center justify-between gap-3 text-xs sm:text-sm">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex h-2.5 w-2.5 rounded-full bg-goldLight shrink-0"></span>
+        <span id="toast-message">Tersalin ke papan klip.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. WELCOMING COVER / HERO SECTION                                      -->
+  <!-- ===================================================================== -->
+  <header class="relative min-h-screen flex flex-col items-center justify-center px-4 py-12 sm:py-16 overflow-hidden">
+    <!-- Decorative Gold Geometric Lines in Background -->
+    <svg
+      class="pointer-events-none absolute inset-0 w-full h-full opacity-35"
+      viewBox="0 0 1200 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <polygon
+        points="600,70 960,275 960,685 600,890 240,685 240,275"
+        fill="none"
+        stroke="#C59B52"
+        stroke-width="1.2"
+      />
+      <polygon
+        points="600,115 920,300 920,660 600,845 280,660 280,300"
+        fill="none"
+        stroke="#C59B52"
+        stroke-width="0.9"
+        stroke-dasharray="6 6"
+      />
+      <line x1="0" y1="140" x2="290" y2="310" stroke="#C59B52" stroke-width="0.8" />
+      <line x1="1200" y1="760" x2="910" y2="590" stroke="#C59B52" stroke-width="0.8" />
+    </svg>
+
+    <!-- Top-Right Dried Palm & Terracotta Floral Cluster -->
+    <div class="pointer-events-none absolute -top-6 -right-6 sm:top-2 sm:right-4 w-44 sm:w-64 md:w-72 animate-float-slow z-0" aria-hidden="true">
+      <svg viewBox="0 0 260 260" class="w-full h-auto drop-shadow-sm">
+        <path d="M185 35 L110 120 L130 132 L205 48 Z" fill="#C99A72" opacity="0.88" />
+        <path d="M210 52 L124 132 L144 146 L228 68 Z" fill="#B57E52" opacity="0.85" />
+        <path d="M230 76 L138 148 L156 164 L244 95 Z" fill="#D5AC87" opacity="0.9" />
+        <path d="M162 24 L98 106 L115 116 L180 34 Z" fill="#A66E43" opacity="0.78" />
+        <circle cx="142" cy="128" r="18" fill="#B55D32" />
+        <circle cx="132" cy="118" r="10" fill="#CE7648" />
+        <circle cx="154" cy="122" r="11" fill="#8F431E" />
+        <circle cx="144" cy="142" r="11" fill="#C59B52" />
+        <circle cx="142" cy="128" r="5" fill="#F6E2B3" />
+        <path d="M105 155 Q72 175 55 215" fill="none" stroke="#8C7A6B" stroke-width="1.8" stroke-linecap="round" />
+        <ellipse cx="86" cy="172" rx="11" ry="4.5" transform="rotate(-28 86 172)" fill="#9E8C7A" opacity="0.75" />
+        <ellipse cx="72" cy="190" rx="11" ry="4.5" transform="rotate(-35 72 190)" fill="#B59D84" opacity="0.75" />
+        <ellipse cx="62" cy="208" rx="10" ry="4" transform="rotate(-40 62 208)" fill="#8C7A6B" opacity="0.75" />
+      </svg>
+    </div>
+
+    <!-- Bottom-Left Dried Palm & Terracotta Floral Cluster -->
+    <div class="pointer-events-none absolute -bottom-8 -left-6 sm:bottom-2 sm:left-4 w-44 sm:w-64 md:w-72 z-0" aria-hidden="true">
+      <svg viewBox="0 0 260 260" class="w-full h-auto drop-shadow-sm">
+        <path d="M72 225 L148 140 L128 128 L52 212 Z" fill="#C99A72" opacity="0.88" />
+        <path d="M48 208 L134 128 L114 114 L30 192 Z" fill="#B57E52" opacity="0.85" />
+        <path d="M30 184 L120 112 L102 96 L14 165 Z" fill="#D5AC87" opacity="0.9" />
+        <path d="M96 236 L160 154 L143 144 L78 226 Z" fill="#A66E43" opacity="0.78" />
+        <circle cx="118" cy="132" r="18" fill="#B55D32" />
+        <circle cx="128" cy="142" r="10" fill="#CE7648" />
+        <circle cx="106" cy="138" r="11" fill="#8F431E" />
+        <circle cx="116" cy="118" r="11" fill="#C59B52" />
+        <circle cx="118" cy="132" r="5" fill="#F6E2B3" />
+        <path d="M155 105 Q188 85 205 45" fill="none" stroke="#8C7A6B" stroke-width="1.8" stroke-linecap="round" />
+        <ellipse cx="174" cy="88" rx="11" ry="4.5" transform="rotate(-28 174 88)" fill="#9E8C7A" opacity="0.75" />
+        <ellipse cx="188" cy="70" rx="11" ry="4.5" transform="rotate(-35 188 70)" fill="#B59D84" opacity="0.75" />
+        <ellipse cx="198" cy="52" rx="10" ry="4" transform="rotate(-40 198 52)" fill="#8C7A6B" opacity="0.75" />
+      </svg>
+    </div>
+
+    <!-- Central Hexagon Frame Card -->
+    <div class="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center text-center">
+      <div class="relative w-full bg-cream/90 backdrop-blur-sm border border-gold/60 rounded-3xl px-5 py-9 sm:px-10 sm:py-12 shadow-card">
+        <div class="pointer-events-none absolute inset-2.5 sm:inset-3.5 border border-gold/35 rounded-2xl" aria-hidden="true"></div>
+
+        <!-- Top Hexagon Emblem -->
+        <div class="relative mx-auto mb-4 w-16 h-16 flex items-center justify-center">
+          <svg viewBox="0 0 100 100" class="w-full h-full" aria-hidden="true">
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="#FAF6F0" stroke="#C59B52" stroke-width="2.5" />
+            <polygon points="50,15 82,33 82,67 50,85 18,67 18,33" fill="none" stroke="#B55D32" stroke-width="1.2" opacity="0.7" />
+            <text x="50" y="57" text-anchor="middle" fill="#8F431E" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="600">R&amp;R</text>
+          </svg>
+        </div>
+
+        <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-terracotta font-semibold mb-2">
+          Save The Date
+        </p>
+
+        <h1 class="font-script text-5xl sm:text-6xl md:text-7xl text-terracottaDark leading-tight mb-3">
+          Raka &amp; Reva
+        </h1>
+
+        <p class="font-serif italic text-base sm:text-lg text-muted mb-5">
+          Raka Ardiansyah &amp; Reva Nurajifa
+        </p>
+
+        <!-- Ornamental Divider -->
+        <div class="flex items-center justify-center gap-3 mb-5" aria-hidden="true">
+          <span class="h-px w-12 sm:w-16 bg-gold/60"></span>
+          <span class="w-2.5 h-2.5 rotate-45 border border-terracotta bg-cream"></span>
+          <span class="h-px w-12 sm:w-16 bg-gold/60"></span>
+        </div>
+
+        <!-- Guest Name Banner via URL (?to=Nama+Tamu) -->
+        <div id="guest-to-box" class="mb-5 px-4 py-3 rounded-2xl bg-creamDark/85 border border-gold/45 max-w-sm mx-auto">
+          <p class="text-[11px] uppercase tracking-[0.2em] text-muted mb-0.5">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+          <p id="guest-to-name" class="font-serif text-lg sm:text-xl font-bold text-terracottaDark">Tamu Undangan</p>
+        </div>
+
+        <!-- Salam Pembuka -->
+        <p class="font-serif text-lg sm:text-xl md:text-2xl font-semibold text-charcoal mb-2">
+          Assalamu’alaikum Warahmatullahi Wabarakatuh
+        </p>
+
+        <p class="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed mb-7">
+          Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri rangkaian acara pernikahan putra-putri kami.
+        </p>
+
+        <!-- Primary CTA Button: Buka Undangan (Otomatis memutar musik) -->
+        <button
+          type="button"
+          id="btn-buka-undangan"
+          class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-terracotta to-terracottaDark hover:from-terracottaDark hover:to-rust text-cream font-medium text-sm sm:text-base tracking-wide shadow-lg hover:shadow-xl active:scale-[0.99] transition-all duration-200 cursor-pointer"
+        >
+          <svg class="w-4 h-4 text-goldLight" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+          </svg>
+          <span>Buka Undangan</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- Quick Date Preview Pills -->
+        <div class="mt-7 pt-5 border-t border-gold/25 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5 text-xs text-muted">
+          <span>Walimatul Ursy: <strong class="text-charcoal font-semibold">29 Nov 2026</strong></span>
+          <span class="hidden sm:inline text-gold">•</span>
+          <span>Akad Nikah: <strong class="text-charcoal font-semibold">02 Des 2026</strong></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN CONTENT                                                          -->
+  <!-- ===================================================================== -->
+  <main id="isi-undangan" class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-16 sm:space-y-24">
+
+    <!-- =================================================================== -->
+    <!-- 1B. AYAT / DOA PEMBUKA ISLAMI                                       -->
+    <!-- =================================================================== -->
+    <section aria-label="Ayat Pembuka Pernikahan" class="reveal-item pt-4">
+      <div class="bg-cream/95 border border-gold/50 rounded-3xl px-6 py-8 sm:px-10 sm:py-10 shadow-card text-center max-w-3xl mx-auto relative overflow-hidden">
+        <div class="pointer-events-none absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent" aria-hidden="true"></div>
+        <p class="font-serif italic text-base sm:text-lg md:text-xl text-charcoal leading-relaxed mb-3">
+          “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
+        </p>
+        <p class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">
+          QS. Ar-Rum : 21
+        </p>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 2. BRIDE & GROOM PROFILES                                           -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-mempelai" class="reveal-item">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-terracotta font-semibold mb-2">
+          Mempelai Berbahagia
+        </span>
+        <h2 id="heading-mempelai" class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-charcoal mb-3">
+          Putra &amp; Putri Kami
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Maha Suci Allah SWT yang telah menciptakan makhluk-Nya berpasang-pasangan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Groom Card: Raka Ardiansyah -->
+        <article class="bg-cream/95 border border-gold/45 rounded-3xl p-6 sm:p-8 shadow-card flex flex-col items-center text-center relative overflow-hidden">
+          <div class="pointer-events-none absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-goldLight via-terracotta to-goldLight" aria-hidden="true"></div>
+
+          <div class="w-24 h-24 sm:w-28 sm:h-28 mb-5 flex items-center justify-center relative">
+            <svg viewBox="0 0 120 120" class="w-full h-full" aria-hidden="true">
+              <polygon points="60,8 106,34 106,86 60,112 14,86 14,34" fill="#F2EAE0" stroke="#C59B52" stroke-width="2" />
+              <polygon points="60,16 98,37 98,83 60,104 22,83 22,37" fill="#FAF6F0" stroke="#B55D32" stroke-width="1" stroke-dasharray="3 3" />
+              <text x="60" y="72" text-anchor="middle" fill="#8F431E" font-family="'Alex Brush', cursive" font-size="40">Raka</text>
+            </svg>
+          </div>
+
+          <span class="text-[11px] uppercase tracking-[0.22em] text-terracotta font-semibold mb-1">
+            Mempelai Putra
+          </span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+            Raka Ardiansyah
+          </h3>
+          <div class="w-12 h-px bg-gold/60 my-2.5" aria-hidden="true"></div>
+          <p class="text-xs sm:text-sm text-muted">
+            Putra dari
+          </p>
+          <p class="font-serif text-lg sm:text-xl font-semibold text-charcoal mt-0.5">
+            Bapak Yudi &amp; Ibu Rini Shinta
+          </p>
+        </article>
+
+        <!-- Bride Card: Reva Nurajifa -->
+        <article class="bg-cream/95 border border-gold/45 rounded-3xl p-6 sm:p-8 shadow-card flex flex-col items-center text-center relative overflow-hidden">
+          <div class="pointer-events-none absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-goldLight via-terracotta to-goldLight" aria-hidden="true"></div>
+
+          <div class="w-24 h-24 sm:w-28 sm:h-28 mb-5 flex items-center justify-center relative">
+            <svg viewBox="0 0 120 120" class="w-full h-full" aria-hidden="true">
+              <polygon points="60,8 106,34 106,86 60,112 14,86 14,34" fill="#F2EAE0" stroke="#C59B52" stroke-width="2" />
+              <polygon points="60,16 98,37 98,83 60,104 22,83 22,37" fill="#FAF6F0" stroke="#B55D32" stroke-width="1" stroke-dasharray="3 3" />
+              <text x="60" y="72" text-anchor="middle" fill="#8F431E" font-family="'Alex Brush', cursive" font-size="40">Reva</text>
+            </svg>
+          </div>
+
+          <span class="text-[11px] uppercase tracking-[0.22em] text-terracotta font-semibold mb-1">
+            Mempelai Putri
+          </span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+            Reva Nurajifa
+          </h3>
+          <div class="w-12 h-px bg-gold/60 my-2.5" aria-hidden="true"></div>
+          <p class="text-xs sm:text-sm text-muted">
+            Putri dari
+          </p>
+          <p class="font-serif text-lg sm:text-xl font-semibold text-charcoal mt-0.5">
+            Bapak Idin Tajidin &amp; Ibu Aisyah
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 3. JAM DIGITAL REAL-TIME (WIB) & COUNTDOWN TIMER                    -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-countdown" class="reveal-item">
+      <div class="bg-gradient-to-br from-creamDark via-cream to-creamDark border border-gold/55 rounded-3xl p-6 sm:p-10 shadow-card text-center space-y-8">
+        <!-- Jam Digital Real-Time (WIB) -->
+        <div class="max-w-xl mx-auto bg-cream/95 border border-gold/50 rounded-2xl px-5 py-4 shadow-soft">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <span class="inline-block w-2 h-2 rounded-full bg-terracotta animate-ping"></span>
+            <span class="text-[11px] uppercase tracking-[0.22em] text-terracottaDark font-semibold">
+              Waktu Digital Saat Ini (WIB)
+            </span>
+          </div>
+          <div id="live-wib-clock" class="font-serif text-3xl sm:text-4xl font-bold text-charcoal tracking-wider tabular-nums">
+            --:--:-- WIB
+          </div>
+          <p id="live-wib-date" class="text-xs text-muted mt-1">
+            Memuat hari &amp; tanggal...
+          </p>
+        </div>
+
+        <!-- Hitung Mundur Menuju Hari Bahagia -->
+        <div>
+          <span class="inline-block text-xs uppercase tracking-[0.24em] text-terracotta font-semibold mb-2">
+            Menghitung Hari Bahagia
+          </span>
+          <h2 id="heading-countdown" class="font-serif text-2xl sm:text-4xl font-semibold text-charcoal mb-2">
+            Menuju Hari Penuh Berkah
+          </h2>
+          <p id="countdown-target-label" class="text-xs sm:text-sm text-muted mb-6">
+            Menghitung mundur menuju Walimatul Ursy — Minggu, 29 November 2026 (09.00 WIB)
+          </p>
+
+          <!-- Target Switcher Pills -->
+          <div class="inline-flex flex-wrap items-center justify-center gap-2 bg-cream p-1.5 rounded-full border border-gold/40 mb-7">
+            <button
+              type="button"
+              id="tab-walimatul"
+              data-target="walimatul"
+              aria-pressed="true"
+              class="countdown-tab px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-terracotta text-cream shadow-sm transition cursor-pointer"
+            >
+              Walimatul Ursy (29 Nov)
+            </button>
+            <button
+              type="button"
+              id="tab-akad"
+              data-target="akad"
+              aria-pressed="false"
+              class="countdown-tab px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-muted hover:text-charcoal transition cursor-pointer"
+            >
+              Akad Nikah (02 Des)
+            </button>
+          </div>
+
+          <!-- 4 Time Boxes -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-2xl mx-auto">
+            <div class="bg-cream border border-gold/45 rounded-2xl py-4 px-3 shadow-soft">
+              <div id="cd-days" class="font-serif text-3xl sm:text-5xl font-bold text-terracottaDark tabular-nums">00</div>
+              <div class="text-[11px] sm:text-xs uppercase tracking-widest text-muted mt-1">Hari</div>
+            </div>
+            <div class="bg-cream border border-gold/45 rounded-2xl py-4 px-3 shadow-soft">
+              <div id="cd-hours" class="font-serif text-3xl sm:text-5xl font-bold text-terracottaDark tabular-nums">00</div>
+              <div class="text-[11px] sm:text-xs uppercase tracking-widest text-muted mt-1">Jam</div>
+            </div>
+            <div class="bg-cream border border-gold/45 rounded-2xl py-4 px-3 shadow-soft">
+              <div id="cd-minutes" class="font-serif text-3xl sm:text-5xl font-bold text-terracottaDark tabular-nums">00</div>
+              <div class="text-[11px] sm:text-xs uppercase tracking-widest text-muted mt-1">Menit</div>
+            </div>
+            <div class="bg-cream border border-gold/45 rounded-2xl py-4 px-3 shadow-soft">
+              <div id="cd-seconds" class="font-serif text-3xl sm:text-5xl font-bold text-terracottaDark tabular-nums">00</div>
+              <div class="text-[11px] sm:text-xs uppercase tracking-widest text-muted mt-1">Detik</div>
+            </div>
+          </div>
+
+          <p id="countdown-status-note" class="text-xs text-terracottaDark/85 italic mt-6">
+            Semoga Allah SWT senantiasa melimpahkan keberkahan dan kemudahan pada setiap rangkaian acara.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 4. EVENT SCHEDULE CARDS (WALIMATUL URSY & AKAD NIKAH)               -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-jadwal" class="reveal-item">
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-terracotta font-semibold mb-2">
+          Rangkaian Acara
+        </span>
+        <h2 id="heading-jadwal" class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-charcoal mb-3">
+          Waktu &amp; Tempat Pelaksanaan
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Card 1: Walimatul Ursy / Acara Mempelai Lelaki -->
+        <article class="bg-cream/95 border border-gold/50 rounded-3xl p-6 sm:p-8 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracottaDark text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-terracotta"></span>
+                Acara Mempelai Lelaki
+              </span>
+              <span class="font-serif italic text-sm text-muted">29 Nov 2026</span>
+            </div>
+
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-4">
+              Walimatul Ursy
+            </h3>
+
+            <div class="space-y-3.5 text-sm text-charcoal border-t border-b border-gold/30 py-4 mb-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Hari &amp; Tanggal</span>
+                  <strong class="font-semibold">Minggu, 29 November 2026</strong>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Waktu</span>
+                  <strong class="font-semibold">Pukul 09.00 WIB s/d Selesai</strong>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Tempat</span>
+                  <strong class="font-semibold block">Kediaman Bapak Wahya</strong>
+                  <span class="text-muted">Kp. Lembur Sawah RT 07 RW 12 No. 64, Kel. Utama, Kec. Cimahi Selatan, Kota Cimahi</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] sm:text-xs text-muted bg-creamDark/80 border border-gold/30 rounded-xl p-3 mb-5 leading-relaxed">
+              <strong class="text-charcoal font-medium">Catatan informasi:</strong> Jadwal mengikuti rincian teks undangan (<strong>Pukul 09.00 WIB</strong> di <strong>Kediaman Bapak Wahya, Kp. Lembur Sawah RT 07 RW 12 No. 64, Kota Cimahi</strong>).
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <a
+              href="https://maps.app.goo.gl/J538hwXDjiS2yUBC6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-terracotta text-cream hover:bg-terracottaDark font-medium text-xs sm:text-sm transition-colors shadow-sm"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              <span>Buka Google Maps</span>
+            </a>
+            <button
+              type="button"
+              data-copy-location="Walimatul Ursy — Kediaman Bapak Wahya, Kp. Lembur Sawah RT 07 RW 12 No. 64, Kota Cimahi | https://maps.app.goo.gl/J538hwXDjiS2yUBC6"
+              class="btn-copy-location inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-2xl border border-gold/70 bg-creamDark hover:bg-gold/25 text-charcoal font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-terracottaDark shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Salin Alamat</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2: Akad Nikah -->
+        <article class="bg-cream/95 border border-gold/50 rounded-3xl p-6 sm:p-8 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/20 text-terracottaDark text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-gold"></span>
+                Prosesi Sakral
+              </span>
+              <span class="font-serif italic text-sm text-muted">02 Des 2026</span>
+            </div>
+
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-4">
+              Akad Nikah
+            </h3>
+
+            <div class="space-y-3.5 text-sm text-charcoal border-t border-b border-gold/30 py-4 mb-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Hari &amp; Tanggal</span>
+                  <strong class="font-semibold">Rabu, 02 Desember 2026</strong>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Waktu</span>
+                  <strong class="font-semibold">Pukul 08.00 WIB s/d Selesai</strong>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <span class="text-xs text-muted block">Tempat</span>
+                  <strong class="font-semibold block">Kp. Cikawung, Desa Karang Pawitan</strong>
+                  <span class="text-muted">Kecamatan Karang Pawitan, Kabupaten Garut</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] sm:text-xs text-muted bg-creamDark/80 border border-gold/30 rounded-xl p-3 mb-5 leading-relaxed">
+              Mohon kehadiran Bapak/Ibu/Saudara/i tepat waktu agar dapat mengikuti prosesi akad nikah dengan khidmat.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <a
+              href="https://maps.app.goo.gl/cZQ8sPTFaYbvDjLD6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-terracotta text-cream hover:bg-terracottaDark font-medium text-xs sm:text-sm transition-colors shadow-sm"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              <span>Buka Google Maps</span>
+            </a>
+            <button
+              type="button"
+              data-copy-location="Akad Nikah — Kp. Cikawung, Desa Karang Pawitan, Kecamatan Karang Pawitan, Kabupaten Garut | https://maps.app.goo.gl/cZQ8sPTFaYbvDjLD6"
+              class="btn-copy-location inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-2xl border border-gold/70 bg-creamDark hover:bg-gold/25 text-charcoal font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-terracottaDark shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Salin Alamat</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 5. WHATSAPP SHARE & COPY HELPER BAR                                 -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-bagikan" class="reveal-item">
+      <div class="bg-cream border border-gold/55 rounded-3xl p-6 sm:p-8 shadow-card space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="max-w-xl">
+            <span class="inline-block text-xs uppercase tracking-[0.22em] text-terracotta font-semibold mb-1.5">
+              Bagikan Undangan
+            </span>
+            <h2 id="heading-bagikan" class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal mb-2">
+              Kirim Undangan ke Keluarga &amp; Sahabat
+            </h2>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              Masukkan nama tamu untuk membuat tautan undangan personal, atau salin format teks undangan lengkap beserta kedua link Google Maps resmi untuk ditempel di WhatsApp.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <button
+              type="button"
+              id="btn-salin-wa"
+              class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-creamDark hover:bg-gold/25 text-charcoal border border-gold/70 font-medium text-xs sm:text-sm transition cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-terracottaDark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Salin Teks Undangan WA</span>
+            </button>
+
+            <a
+              id="btn-bagikan-wa"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-gradient-to-r from-terracotta to-terracottaDark hover:from-terracottaDark hover:to-rust text-cream font-medium text-xs sm:text-sm shadow-md transition"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.141 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969 0-5.516-4.453-9.968-9.969-9.968zm5.828 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.172.109-1.891-.125-.438-.141-1-.328-1.734-.641-3.047-1.312-5.031-4.391-5.188-4.594-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375.203 0 .406 0 .578.016.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.328-.313.5-.156.172-.328.391-.469.516-.156.141-.328.297-.141.609.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.797-.922 1.016-1.234.219-.313.422-.266.703-.156.281.109 1.813.859 2.125 1.016.313.156.516.234.594.375.078.141.078.813-.172 1.516z" />
+              </svg>
+              <span>Bagikan ke WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Generator Link Khusus Nama Tamu -->
+        <div class="bg-creamDark/65 border border-gold/40 rounded-2xl p-4 sm:p-5 space-y-3">
+          <label for="custom-guest-input" class="block text-xs font-semibold uppercase tracking-wider text-charcoal">
+            Buat Link Khusus Nama Tamu (<code class="text-terracottaDark lowercase font-mono">?to=Nama+Tamu</code>)
+          </label>
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <input
+              type="text"
+              id="custom-guest-input"
+              placeholder="Ketik nama tamu, misal: Bapak Ahmad & Keluarga"
+              class="flex-1 px-4 py-2.5 rounded-xl bg-cream border border-gold/50 focus:border-terracotta focus:outline-none text-xs sm:text-sm text-charcoal placeholder:text-muted/70"
+            />
+            <button
+              type="button"
+              id="btn-copy-guest-link"
+              class="px-4 py-2.5 rounded-xl bg-terracotta text-cream hover:bg-terracottaDark font-medium text-xs sm:text-sm transition cursor-pointer shrink-0"
+            >
+              Salin Link Tamu
+            </button>
+          </div>
+          <p id="custom-guest-url-preview" class="text-[11px] text-muted break-all font-mono"></p>
+        </div>
+
+        <!-- Pratinjau Teks Undangan Siap Kirim -->
+        <details class="bg-creamDark/70 border border-gold/35 rounded-2xl p-4">
+          <summary class="text-xs font-semibold uppercase tracking-wider text-terracottaDark cursor-pointer select-none">
+            Lihat Pratinjau Teks Undangan WhatsApp Siap Kirim
+          </summary>
+          <pre id="wa-preview-text" class="mt-3 whitespace-pre-wrap font-sans text-xs text-charcoal/90 leading-relaxed bg-cream p-4 rounded-xl border border-gold/30 max-h-60 overflow-y-auto"></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 5B. AMPLOP DIGITAL / KADO PERNIKAHAN (BANK MANDIRI)                 -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-amplop" class="reveal-item">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-terracotta font-semibold mb-2">
+          Tanda Kasih
+        </span>
+        <h2 id="heading-amplop" class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-charcoal mb-3">
+          Amplop Digital
+        </h2>
+        <p class="text-xs sm:text-sm text-muted leading-relaxed">
+          Doa restu Bapak/Ibu/Saudara/i merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya melalui rekening berikut:
+        </p>
+      </div>
+
+      <div class="max-w-md mx-auto">
+        <article class="relative bg-gradient-to-br from-cream via-creamDark to-cream border border-gold/65 rounded-3xl p-6 sm:p-8 shadow-card overflow-hidden text-center">
+          <div class="pointer-events-none absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-goldLight via-terracotta to-goldLight" aria-hidden="true"></div>
+
+          <div class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-terracotta/10 border border-gold/40 mb-5">
+            <svg class="w-4 h-4 text-terracottaDark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-terracottaDark">Bank Mandiri</span>
+          </div>
+
+          <p class="text-[11px] uppercase tracking-[0.2em] text-muted mb-1">Nomor Rekening</p>
+          <p id="mandiri-account-number" class="font-serif text-3xl sm:text-4xl font-bold text-charcoal tracking-wider tabular-nums mb-3 select-all">
+            1300027984668
+          </p>
+
+          <div class="w-16 h-px bg-gold/60 mx-auto my-3" aria-hidden="true"></div>
+
+          <p class="text-xs text-muted mb-0.5">Atas Nama</p>
+          <p class="font-serif text-xl sm:text-2xl font-bold text-terracottaDark tracking-wide mb-6">
+            RAKA ARDIANSYAH
+          </p>
+
+          <button
+            type="button"
+            id="btn-copy-rekening"
+            data-rekening="1300027984668"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-gradient-to-r from-terracotta to-terracottaDark hover:from-terracottaDark hover:to-rust text-cream font-medium text-xs sm:text-sm shadow-md transition cursor-pointer"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span>Salin No. Rekening</span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 6. RSVP / UCAPAN & DOA RESTU INTERACTIVE FORM + FEED                 -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="heading-ucapan" class="reveal-item">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-terracotta font-semibold mb-2">
+          Konfirmasi Kehadiran &amp; Doa
+        </span>
+        <h2 id="heading-ucapan" class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-charcoal mb-3">
+          Ucapan &amp; Doa Restu
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Sampaikan doa terbaik serta konfirmasi kehadiran Anda untuk Raka &amp; Reva.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+        <!-- Form Column -->
+        <div class="lg:col-span-5 bg-cream/95 border border-gold/50 rounded-3xl p-6 sm:p-7 shadow-card">
+          <form id="rsvp-form" class="space-y-4" novalidate>
+            <div>
+              <label for="guest-name" class="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-1.5">
+                Nama Lengkap <span class="text-terracotta">*</span>
+              </label>
+              <input
+                type="text"
+                id="guest-name"
+                name="guestName"
+                placeholder="Contoh: Keluarga Budi Santoso"
+                required
+                class="w-full px-4 py-3 rounded-2xl bg-creamDark/60 border border-gold/50 focus:border-terracotta focus:bg-white focus:outline-none text-sm text-charcoal placeholder:text-muted/70 transition"
+              />
+            </div>
+
+            <div>
+              <label for="guest-attendance" class="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-1.5">
+                Konfirmasi Kehadiran
+              </label>
+              <select
+                id="guest-attendance"
+                name="attendance"
+                class="w-full px-4 py-3 rounded-2xl bg-creamDark/60 border border-gold/50 focus:border-terracotta focus:bg-white focus:outline-none text-sm text-charcoal transition cursor-pointer"
+              >
+                <option value="Hadir Walimatul Ursy & Akad Nikah">Hadir (Walimatul Ursy &amp; Akad Nikah)</option>
+                <option value="Hadir Walimatul Ursy (29 Nov)">Hadir Walimatul Ursy (29 Nov 2026)</option>
+                <option value="Hadir Akad Nikah (02 Des)">Hadir Akad Nikah (02 Des 2026)</option>
+                <option value="Mendoakan dari Jauh">Mendoakan dari Jauh</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="guest-wish" class="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-1.5">
+                Ucapan &amp; Doa Restu <span class="text-terracotta">*</span>
+              </label>
+              <textarea
+                id="guest-wish"
+                name="wish"
+                rows="4"
+                placeholder="Tuliskan doa restu dan ucapan bahagia untuk Raka & Reva..."
+                required
+                class="w-full px-4 py-3 rounded-2xl bg-creamDark/60 border border-gold/50 focus:border-terracotta focus:bg-white focus:outline-none text-sm text-charcoal placeholder:text-muted/70 transition resize-none"
+              ></textarea>
+            </div>
+
+            <p id="form-error" class="hidden text-xs text-terracottaDark font-medium"></p>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-terracotta to-terracottaDark hover:from-terracottaDark hover:to-rust text-cream font-medium text-sm shadow-md hover:shadow-lg transition cursor-pointer"
+            >
+              Kirim Ucapan &amp; Doa
+            </button>
+          </form>
+        </div>
+
+        <!-- Wishes Feed Column -->
+        <div class="lg:col-span-7 bg-cream/95 border border-gold/50 rounded-3xl p-6 sm:p-7 shadow-card">
+          <div class="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-gold/30">
+            <h3 class="font-serif text-xl sm:text-2xl font-semibold text-charcoal">
+              Daftar Doa Restu (<span id="wishes-count">3</span>)
+            </h3>
+            <span class="text-xs text-muted">Terbaru di atas</span>
+          </div>
+
+          <div id="wishes-list" class="wishes-scroll space-y-3.5 max-h-[420px] overflow-y-auto pr-1">
+            <!-- Initial sample wishes rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 7. CLOSING SALAM & FAMILY NAMES                                     -->
+    <!-- =================================================================== -->
+    <footer class="reveal-item text-center bg-gradient-to-b from-cream to-creamDark border border-gold/55 rounded-3xl px-6 py-10 sm:px-12 sm:py-14 shadow-card">
+      <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto leading-relaxed mb-6">
+        Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sedalam-dalamnya.
+      </p>
+
+      <p class="font-serif text-xl sm:text-2xl md:text-3xl font-semibold text-charcoal mb-8">
+        Wassalamu’alaikum Warahmatullahi Wabarakatuh
+      </p>
+
+      <p class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold mb-6">
+        Hormat Kami,
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+        <div class="bg-cream/90 border border-gold/40 rounded-2xl p-5 shadow-soft">
+          <p class="text-[11px] uppercase tracking-widest text-muted mb-1">Keluarga Besar Mempelai Putra</p>
+          <p class="font-serif text-lg sm:text-xl font-bold text-charcoal">
+            Keluarga Besar Bapak Yudi &amp; Ibu Rini Shinta
+          </p>
+        </div>
+
+        <div class="bg-cream/90 border border-gold/40 rounded-2xl p-5 shadow-soft">
+          <p class="text-[11px] uppercase tracking-widest text-muted mb-1">Keluarga Besar Mempelai Putri</p>
+          <p class="font-serif text-lg sm:text-xl font-bold text-charcoal">
+            Keluarga Besar Bapak Idin Tajidin &amp; Ibu Aisyah
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-gold/30 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-muted">
+        <span class="font-script text-2xl text-terracottaDark">Raka &amp; Reva</span>
+        <span class="hidden sm:inline text-gold">•</span>
+        <span>29 Nov 2026 &amp; 02 Des 2026</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Global interval references so timers stay alive reliably
+      window.__rakaRevaClockInterval = window.__rakaRevaClockInterval || null;
+      window.__rakaRevaCountdownInterval = window.__rakaRevaCountdownInterval || null;
+
+      function initUndanganApp() {
+        // -----------------------------------------------------------------
+        // 1. Toast Notification Helper & Safe Clipboard Utility
+        // -----------------------------------------------------------------
+        const toastBanner = document.getElementById('toast-banner');
+        const toastMessageEl = document.getElementById('toast-message');
+        let toastTimeoutId = null;
+
+        function showToast(msg) {
+          if (!toastBanner || !toastMessageEl) return;
+          toastMessageEl.textContent = msg;
+          toastBanner.classList.remove('opacity-0', 'translate-y-4');
+          toastBanner.classList.add('opacity-100', 'translate-y-0');
+
+          if (toastTimeoutId) clearTimeout(toastTimeoutId);
+          toastTimeoutId = setTimeout(function () {
+            toastBanner.classList.remove('opacity-100', 'translate-y-0');
+            toastBanner.classList.add('opacity-0', 'translate-y-4');
+          }, 3200);
+        }
+
+        function copyTextSafe(text, successMsg) {
+          try {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'fixed';
+            textarea.style.top = '-9999px';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+            const copied = document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            if (copied) {
+              showToast(successMsg || 'Berhasil disalin ke papan klip!');
+              return;
+            }
+          } catch (err) {
+            // Fallback below
+          }
+
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+            navigator.clipboard.writeText(text)
+              .then(function () {
+                showToast(successMsg || 'Berhasil disalin ke papan klip!');
+              })
+              .catch(function () {
+                showToast('Gagal menyalin otomatis. Silakan salin manual.');
+              });
+          } else {
+            showToast('Silakan salin teks secara manual.');
+          }
+        }
+
+        // -----------------------------------------------------------------
+        // 2. REAL-TIME DIGITAL CLOCK (WIB / UTC+7)
+        // -----------------------------------------------------------------
+        const liveClockEl = document.getElementById('live-wib-clock');
+        const liveDateEl = document.getElementById('live-wib-date');
+
+        const HARI_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const BULAN_ID = [
+          'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        function padZero(num) {
+          return String(Math.max(0, Math.floor(num))).padStart(2, '0');
+        }
+
+        function updateLiveWibClock() {
+          const nowUtcMs = Date.now();
+          const wibDate = new Date(nowUtcMs + 7 * 3600 * 1000);
+
+          const hh = padZero(wibDate.getUTCHours());
+          const mm = padZero(wibDate.getUTCMinutes());
+          const ss = padZero(wibDate.getUTCSeconds());
+
+          const dayName = HARI_ID[wibDate.getUTCDay()];
+          const dayNum = padZero(wibDate.getUTCDate());
+          const monthName = BULAN_ID[wibDate.getUTCMonth()];
+          const yearNum = wibDate.getUTCFullYear();
+
+          if (liveClockEl) {
+            liveClockEl.textContent = hh + ':' + mm + ':' + ss + ' WIB';
+          }
+          if (liveDateEl) {
+            liveDateEl.textContent = dayName + ', ' + dayNum + ' ' + monthName + ' ' + yearNum;
+          }
+        }
+
+        updateLiveWibClock();
+        if (window.__rakaRevaClockInterval) {
+          clearInterval(window.__rakaRevaClockInterval);
+        }
+        window.__rakaRevaClockInterval = setInterval(updateLiveWibClock, 1000);
+
+        // -----------------------------------------------------------------
+        // 3. COUNTDOWN TIMER (Date.UTC ABSOLUT)
+        //    - Walimatul Ursy: Minggu, 29 Nov 2026 09:00 WIB = 29 Nov 2026 02:00 UTC
+        //    - Akad Nikah:     Rabu, 02 Des 2026 08:00 WIB   = 02 Des 2026 01:00 UTC
+        // -----------------------------------------------------------------
+        const EVENT_TARGETS = {
+          walimatul: {
+            timestampUtc: Date.UTC(2026, 10, 29, 2, 0, 0),
+            label: 'Menghitung mundur menuju Walimatul Ursy — Minggu, 29 November 2026 (09.00 WIB)'
+          },
+          akad: {
+            timestampUtc: Date.UTC(2026, 11, 2, 1, 0, 0),
+            label: 'Menghitung mundur menuju Akad Nikah — Rabu, 02 Desember 2026 (08.00 WIB)'
+          }
+        };
+
+        let activeTargetKey = 'walimatul';
+
+        const cdDaysEl = document.getElementById('cd-days');
+        const cdHoursEl = document.getElementById('cd-hours');
+        const cdMinutesEl = document.getElementById('cd-minutes');
+        const cdSecondsEl = document.getElementById('cd-seconds');
+        const cdTargetLabelEl = document.getElementById('countdown-target-label');
+        const cdStatusNoteEl = document.getElementById('countdown-status-note');
+        const countdownTabs = document.querySelectorAll('.countdown-tab');
+
+        function updateCountdownDisplay() {
+          const targetObj = EVENT_TARGETS[activeTargetKey] || EVENT_TARGETS.walimatul;
+          const nowMs = Date.now();
+          const diffMs = targetObj.timestampUtc - nowMs;
+
+          if (diffMs <= 0) {
+            if (cdDaysEl) cdDaysEl.textContent = '00';
+            if (cdHoursEl) cdHoursEl.textContent = '00';
+            if (cdMinutesEl) cdMinutesEl.textContent = '00';
+            if (cdSecondsEl) cdSecondsEl.textContent = '00';
+            if (cdStatusNoteEl) {
+              cdStatusNoteEl.textContent = 'Alhamdulillah, rangkaian acara ini telah tiba / terlaksana. Terima kasih atas doa restu Anda.';
+            }
+            return;
+          }
+
+          const totalSeconds = Math.floor(diffMs / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          if (cdDaysEl) cdDaysEl.textContent = padZero(days);
+          if (cdHoursEl) cdHoursEl.textContent = padZero(hours);
+          if (cdMinutesEl) cdMinutesEl.textContent = padZero(minutes);
+          if (cdSecondsEl) cdSecondsEl.textContent = padZero(seconds);
+
+          if (cdStatusNoteEl) {
+            cdStatusNoteEl.textContent = 'Semoga Allah SWT senantiasa melimpahkan keberkahan dan kemudahan pada setiap rangkaian acara.';
+          }
+        }
+
+        countdownTabs.forEach(function (tabBtn) {
+          tabBtn.addEventListener('click', function () {
+            const selectedKey = tabBtn.getAttribute('data-target');
+            if (!selectedKey || !EVENT_TARGETS[selectedKey]) return;
+
+            activeTargetKey = selectedKey;
+            if (cdTargetLabelEl) {
+              cdTargetLabelEl.textContent = EVENT_TARGETS[selectedKey].label;
+            }
+
+            countdownTabs.forEach(function (btn) {
+              const isMatch = btn.getAttribute('data-target') === selectedKey;
+              btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+              if (isMatch) {
+                btn.classList.add('bg-terracotta', 'text-cream', 'shadow-sm');
+                btn.classList.remove('text-muted', 'hover:text-charcoal');
+              } else {
+                btn.classList.remove('bg-terracotta', 'text-cream', 'shadow-sm');
+                btn.classList.add('text-muted', 'hover:text-charcoal');
+              }
+            });
+
+            updateCountdownDisplay();
+          });
+        });
+
+        updateCountdownDisplay();
+        if (window.__rakaRevaCountdownInterval) {
+          clearInterval(window.__rakaRevaCountdownInterval);
+        }
+        window.__rakaRevaCountdownInterval = setInterval(updateCountdownDisplay, 1000);
+
+        // -----------------------------------------------------------------
+        // 4. GUEST NAME (?to=...) & WHATSAPP INVITATION GENERATOR
+        // -----------------------------------------------------------------
+        const guestToNameEl = document.getElementById('guest-to-name');
+        const customGuestInput = document.getElementById('custom-guest-input');
+        const customGuestUrlPreview = document.getElementById('custom-guest-url-preview');
+        const btnCopyGuestLink = document.getElementById('btn-copy-guest-link');
+        const btnSalinWa = document.getElementById('btn-salin-wa');
+        const btnBagikanWa = document.getElementById('btn-bagikan-wa');
+        const waPreviewTextEl = document.getElementById('wa-preview-text');
+
+        let currentGuestName = 'Tamu Undangan';
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const toParam = urlParams.get('to');
+          if (toParam && toParam.trim()) {
+            currentGuestName = toParam.trim();
+          }
+        } catch (e) {
+          // Ignore URLSearchParams issues
+        }
+
+        if (guestToNameEl) {
+          guestToNameEl.textContent = currentGuestName;
+        }
+
+        function getBaseCleanUrl() {
+          try {
+            const urlObj = new URL(window.location.href);
+            urlObj.search = '';
+            urlObj.hash = '';
+            return urlObj.toString();
+          } catch (e) {
+            return window.location.href.split('?')[0].split('#')[0];
+          }
+        }
+
+        function buildGuestShareUrl(guestName) {
+          const base = getBaseCleanUrl();
+          if (guestName && guestName.trim()) {
+            return base + '?to=' + encodeURIComponent(guestName.trim());
+          }
+          return base;
+        }
+
+        function buildWhatsAppMessage(guestName) {
+          const namaPenerima = (guestName && guestName.trim()) ? guestName.trim() : 'Bapak/Ibu/Saudara/i';
+          const linkUndangan = buildGuestShareUrl(guestName);
+
+          return [
+            '*UNDANGAN PERNIKAHAN*',
+            '*AKAD NIKAH & WALIMATUL URSY*',
+            '',
+            'Kepada Yth. *' + namaPenerima + '*',
+            '',
+            '_Assalamu’alaikum Warahmatullahi Wabarakatuh_',
+            '',
+            'Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri rangkaian acara pernikahan putra-putri kami:',
+            '',
+            '*RAKA ARDIANSYAH*',
+            'Putra dari Bapak Yudi & Ibu Rini Shinta',
+            'dengan',
+            '*REVA NURAJIFA*',
+            'Putri dari Bapak Idin Tajidin & Ibu Aisyah',
+            '',
+            'Adapun rangkaian acara insyaAllah akan dilaksanakan pada:',
+            '',
+            '*1. WALIMATUL URSY*',
+            'Hari/Tanggal: Minggu, 29 November 2026',
+            'Waktu: Pukul 09.00 WIB s/d selesai',
+            'Tempat: Kediaman Bapak Wahya, Kp. Lembur Sawah RT 07 RW 12 No. 64, Kota Cimahi',
+            'Google Maps: https://maps.app.goo.gl/J538hwXDjiS2yUBC6',
+            '',
+            '*2. AKAD NIKAH*',
+            'Hari/Tanggal: Rabu, 02 Desember 2026',
+            'Waktu: Pukul 08.00 WIB s/d selesai',
+            'Tempat: Kp. Cikawung, Desa Karang Pawitan, Kec. Karang Pawitan, Kab. Garut',
+            'Google Maps: https://maps.app.goo.gl/cZQ8sPTFaYbvDjLD6',
+            '',
+            'Buka Undangan Digital:',
+            linkUndangan,
+            '',
+            'Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.',
+            '',
+            '_Wassalamu’alaikum Warahmatullahi Wabarakatuh_',
+            '',
+            'Hormat kami,',
+            'Keluarga Besar Bapak Yudi & Ibu Rini Shinta',
+            'Keluarga Besar Bapak Idin Tajidin & Ibu Aisyah'
+          ].join('\n');
+        }
+
+        function syncShareWidgets() {
+          const typedGuest = customGuestInput ? customGuestInput.value.trim() : '';
+          const effectiveGuest = typedGuest || (currentGuestName !== 'Tamu Undangan' ? currentGuestName : '');
+          const generatedUrl = buildGuestShareUrl(effectiveGuest);
+          const waText = buildWhatsAppMessage(effectiveGuest);
+
+          if (customGuestUrlPreview) {
+            customGuestUrlPreview.textContent = 'Pratinjau Link: ' + generatedUrl;
+          }
+          if (waPreviewTextEl) {
+            waPreviewTextEl.textContent = waText;
+          }
+          if (btnBagikanWa) {
+            btnBagikanWa.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(waText);
+          }
+        }
+
+        syncShareWidgets();
+
+        if (customGuestInput) {
+          customGuestInput.addEventListener('input', syncShareWidgets);
+        }
+
+        if (btnCopyGuestLink) {
+          btnCopyGuestLink.addEventListener('click', function () {
+            const typedGuest = customGuestInput ? customGuestInput.value.trim() : '';
+            const urlToCopy = buildGuestShareUrl(typedGuest);
+            copyTextSafe(urlToCopy, 'Link undangan tamu berhasil disalin!');
+          });
+        }
+
+        if (btnSalinWa) {
+          btnSalinWa.addEventListener('click', function () {
+            const typedGuest = customGuestInput ? customGuestInput.value.trim() : '';
+            const effectiveGuest = typedGuest || (currentGuestName !== 'Tamu Undangan' ? currentGuestName : '');
+            copyTextSafe(buildWhatsAppMessage(effectiveGuest), 'Teks undangan WhatsApp lengkap berhasil disalin!');
+          });
+        }
+
+        document.querySelectorAll('.btn-copy-location').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const locText = btn.getAttribute('data-copy-location') || '';
+            if (locText) {
+              copyTextSafe(locText, 'Alamat & link Google Maps berhasil disalin!');
+            }
+          });
+        });
+
+        const btnCopyRekening = document.getElementById('btn-copy-rekening');
+        if (btnCopyRekening) {
+          btnCopyRekening.addEventListener('click', function () {
+            const rekNum = btnCopyRekening.getAttribute('data-rekening') || '1300027984668';
+            copyTextSafe(rekNum, 'Nomor rekening Bank Mandiri (' + rekNum + ') berhasil disalin!');
+          });
+        }
+
+        // -----------------------------------------------------------------
+        // 5. FULL WEDDING MUSIC ENGINE:
+        //    - 3 Built-in Web Audio API Wedding Arrangements (Canon, Akad, Cinta)
+        //    - Local Audio File Upload (<input type="file"> via ObjectURL)
+        //    - Custom External MP3 URL + Volume Slider + Equalizer
+        // -----------------------------------------------------------------
+        const musicToggleBtn = document.getElementById('btn-music-toggle');
+        const musicDiscIcon = document.getElementById('music-disc-icon');
+        const musicStatusLabel = document.getElementById('music-status-label');
+        const musicTrackSubtitle = document.getElementById('music-track-subtitle');
+        const musicEqBars = document.getElementById('music-eq-bars');
+        const customBgAudio = document.getElementById('custom-bg-audio');
+
+        const musicSettingsPopover = document.getElementById('music-settings-popover');
+        const toggleMusicSettingsBtn = document.getElementById('btn-toggle-music-settings');
+        const closeMusicSettingsBtn = document.getElementById('btn-close-music-settings');
+        const popoverActiveTrackName = document.getElementById('popover-active-track-name');
+        const popoverPlayPauseBtn = document.getElementById('btn-popover-play-pause');
+        const popoverPlayIcon = document.getElementById('popover-play-icon');
+        const popoverPlayText = document.getElementById('popover-play-text');
+        const volumeSlider = document.getElementById('music-volume-slider');
+        const volumeLabel = document.getElementById('music-volume-label');
+
+        const builtinTrackBtns = document.querySelectorAll('.builtin-track-btn');
+        const localAudioFileInput = document.getElementById('local-audio-file-input');
+        const localFileLabelText = document.getElementById('local-file-label-text');
+        const customMp3Input = document.getElementById('custom-mp3-url-input');
+        const applyCustomMp3Btn = document.getElementById('btn-apply-custom-mp3');
+        const resetBuiltinMusicBtn = document.getElementById('btn-reset-builtin-music');
+
+        const CUSTOM_MP3_STORAGE_KEY = 'undangan_raka_reva_custom_mp3_v2';
+        const BUILTIN_TRACK_STORAGE_KEY = 'undangan_raka_reva_builtin_track_v2';
+
+        // Definisi 3 Koleksi Aransemen Instrumen Pernikahan Bawaan (Web Audio API)
+        const BUILTIN_WEDDING_TRACKS = {
+          canon: {
+            id: 'canon',
+            shortTitle: 'Canon in D',
+            fullTitle: 'Canon in D — Piano & Strings',
+            chordWave: 'sine',
+            melodyWave: 'triangle',
+            filterFreq: 1200,
+            steps: [
+              // Pachelbel's Canon in D (D - A - Bm - F#m - G - D - G - A)
+              { chord: [146.83, 220.00, 293.66], melody: 659.25, dur: 1.45 }, // D: F#5
+              { chord: [146.83, 220.00, 293.66], melody: 587.33, dur: 1.45 }, // D: D5
+              { chord: [110.00, 164.81, 220.00], melody: 554.37, dur: 1.45 }, // A: C#5
+              { chord: [110.00, 164.81, 220.00], melody: 493.88, dur: 1.45 }, // A: B4
+              { chord: [123.47, 185.00, 246.94], melody: 493.88, dur: 1.45 }, // Bm: B4
+              { chord: [123.47, 185.00, 246.94], melody: 440.00, dur: 1.45 }, // Bm: A4
+              { chord: [92.50,  146.83, 185.00], melody: 440.00, dur: 1.45 }, // F#m: A4
+              { chord: [92.50,  146.83, 185.00], melody: 369.99, dur: 1.45 }, // F#m: F#4
+              { chord: [98.00,  146.83, 196.00], melody: 392.00, dur: 1.45 }, // G: G4
+              { chord: [98.00,  146.83, 196.00], melody: 493.88, dur: 1.45 }, // G: B4
+              { chord: [146.83, 220.00, 293.66], melody: 440.00, dur: 1.45 }, // D: A4
+              { chord: [146.83, 220.00, 293.66], melody: 369.99, dur: 1.45 }, // D: F#4
+              { chord: [98.00,  146.83, 196.00], melody: 392.00, dur: 1.45 }, // G: G4
+              { chord: [98.00,  146.83, 196.00], melody: 440.00, dur: 1.45 }, // G: A4
+              { chord: [110.00, 164.81, 220.00], melody: 493.88, dur: 1.45 }, // A: B4
+              { chord: [110.00, 164.81, 220.00], melody: 554.37, dur: 1.45 }  // A: C#5
+            ]
+          },
+          akad: {
+            id: 'akad',
+            shortTitle: 'Akad Sakral',
+            fullTitle: 'Akad Sakral — Harpa & Nuansa Islami',
+            chordWave: 'sine',
+            melodyWave: 'sine',
+            filterFreq: 1350,
+            steps: [
+              // Nuansa Hijaz / Harpa Syahdu (Dm - Eb - Cm - Dm)
+              { chord: [146.83, 220.00, 293.66], melody: 587.33, dur: 1.3 }, // D5
+              { chord: [146.83, 220.00, 293.66], melody: 622.25, dur: 1.3 }, // Eb5
+              { chord: [155.56, 233.08, 311.13], melody: 739.99, dur: 1.3 }, // F#5
+              { chord: [155.56, 233.08, 311.13], melody: 783.99, dur: 1.3 }, // G5
+              { chord: [130.81, 196.00, 261.63], melody: 880.00, dur: 1.3 }, // A5
+              { chord: [130.81, 196.00, 261.63], melody: 783.99, dur: 1.3 }, // G5
+              { chord: [146.83, 220.00, 293.66], melody: 739.99, dur: 1.3 }, // F#5
+              { chord: [146.83, 220.00, 293.66], melody: 622.25, dur: 1.3 }, // Eb5
+              { chord: [146.83, 220.00, 293.66], melody: 587.33, dur: 1.3 }, // D5
+              { chord: [130.81, 196.00, 261.63], melody: 523.25, dur: 1.3 }, // C5
+              { chord: [116.54, 174.61, 233.08], melody: 466.16, dur: 1.3 }, // Bb4
+              { chord: [146.83, 220.00, 293.66], melody: 440.00, dur: 1.3 }  // A4
+            ]
+          },
+          cinta: {
+            id: 'cinta',
+            shortTitle: 'Cinta Sejati',
+            fullTitle: 'Cinta Sejati — Kotak Musik & Piano',
+            chordWave: 'triangle',
+            melodyWave: 'sine',
+            filterFreq: 1650,
+            steps: [
+              // Melodi Kotak Musik Romantis dalam F Major (F - C - Dm - Bb - C - F)
+              { chord: [174.61, 261.63, 349.23], melody: 698.46, dur: 1.35 }, // F5
+              { chord: [174.61, 261.63, 349.23], melody: 880.00, dur: 1.35 }, // A5
+              { chord: [130.81, 196.00, 261.63], melody: 783.99, dur: 1.35 }, // G5
+              { chord: [130.81, 196.00, 261.63], melody: 659.25, dur: 1.35 }, // E5
+              { chord: [146.83, 220.00, 293.66], melody: 587.33, dur: 1.35 }, // D5
+              { chord: [146.83, 220.00, 293.66], melody: 698.46, dur: 1.35 }, // F5
+              { chord: [116.54, 174.61, 233.08], melody: 523.25, dur: 1.35 }, // C5
+              { chord: [116.54, 174.61, 233.08], melody: 466.16, dur: 1.35 }, // Bb4
+              { chord: [130.81, 196.00, 261.63], melody: 523.25, dur: 1.35 }, // C5
+              { chord: [130.81, 196.00, 261.63], melody: 659.25, dur: 1.35 }, // E5
+              { chord: [174.61, 261.63, 349.23], melody: 698.46, dur: 1.55 }, // F5
+              { chord: [174.61, 261.63, 349.23], melody: 698.46, dur: 1.55 }  // F5
+            ]
+          }
+        };
+
+        let isMusicPlaying = false;
+        let audioCtx = null;
+        let synthLoopTimer = null;
+        let synthStepIndex = 0;
+
+        // Mode sumber audio: 'builtin' | 'local_file' | 'custom_url'
+        let audioSourceMode = 'builtin';
+        let activeBuiltinTrackId = 'canon';
+        let activeCustomMp3Url = '';
+        let activeLocalObjectUrl = '';
+        let activeLocalFileName = '';
+        let masterVolume = 0.75; // 0.0 - 1.0
+
+        // Muat preferensi tersimpan jika ada
+        try {
+          if (window.localStorage) {
+            const savedTrack = window.localStorage.getItem(BUILTIN_TRACK_STORAGE_KEY);
+            if (savedTrack && BUILTIN_WEDDING_TRACKS[savedTrack]) {
+              activeBuiltinTrackId = savedTrack;
+            }
+            const savedMp3 = window.localStorage.getItem(CUSTOM_MP3_STORAGE_KEY);
+            if (savedMp3 && savedMp3.trim()) {
+              activeCustomMp3Url = savedMp3.trim();
+              audioSourceMode = 'custom_url';
+              if (customMp3Input) customMp3Input.value = activeCustomMp3Url;
+            }
+          }
+        } catch (e) {
+          // Ignore sandboxed localStorage restriction
+        }
+
+        function getCurrentTrackDisplayInfo() {
+          if (audioSourceMode === 'local_file' && activeLocalFileName) {
+            return {
+              shortTitle: activeLocalFileName.replace(/\.[^/.]+$/, ''),
+              fullTitle: 'File Lokal: ' + activeLocalFileName
+            };
+          }
+          if (audioSourceMode === 'custom_url' && activeCustomMp3Url) {
+            return {
+              shortTitle: 'Lagu Kustom MP3',
+              fullTitle: 'Link MP3 Kustom'
+            };
+          }
+          const track = BUILTIN_WEDDING_TRACKS[activeBuiltinTrackId] || BUILTIN_WEDDING_TRACKS.canon;
+          return {
+            shortTitle: track.shortTitle,
+            fullTitle: track.fullTitle
+          };
+        }
+
+        function syncBuiltinTrackSelectionUI() {
+          builtinTrackBtns.forEach(function (btn) {
+            const trackId = btn.getAttribute('data-track-id');
+            const badge = btn.querySelector('.track-badge');
+            const isSelected = audioSourceMode === 'builtin' && trackId === activeBuiltinTrackId;
+
+            if (isSelected) {
+              btn.classList.add('border-terracotta', 'bg-terracotta/12');
+              btn.classList.remove('border-gold/45', 'bg-cream');
+              if (badge) badge.classList.remove('hidden');
+            } else {
+              btn.classList.remove('border-terracotta', 'bg-terracotta/12');
+              btn.classList.add('border-gold/45', 'bg-cream');
+              if (badge) badge.classList.add('hidden');
+            }
+          });
+        }
+
+        function updateMusicPlayerUI(playing) {
+          isMusicPlaying = playing;
+          const info = getCurrentTrackDisplayInfo();
+
+          if (musicToggleBtn) {
+            musicToggleBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+          }
+          if (musicDiscIcon) {
+            if (playing) {
+              musicDiscIcon.classList.add('animate-spin-disc');
+            } else {
+              musicDiscIcon.classList.remove('animate-spin-disc');
+            }
+          }
+          if (musicEqBars) {
+            if (playing) {
+              musicEqBars.classList.add('eq-active');
+            } else {
+              musicEqBars.classList.remove('eq-active');
+            }
+          }
+          if (musicStatusLabel) {
+            musicStatusLabel.textContent = playing ? 'Musik Aktif' : 'Putar Musik';
+          }
+          if (musicTrackSubtitle) {
+            musicTrackSubtitle.textContent = info.shortTitle;
+          }
+          if (popoverActiveTrackName) {
+            popoverActiveTrackName.textContent = info.fullTitle;
+          }
+          if (popoverPlayIcon) {
+            popoverPlayIcon.textContent = playing ? '❚❚' : '▶';
+          }
+          if (popoverPlayText) {
+            popoverPlayText.textContent = playing ? 'Jeda' : 'Putar';
+          }
+
+          syncBuiltinTrackSelectionUI();
+        }
+
+        function playGentleNote(ctx, freq, startTime, duration, baseGain, waveType, filterFreq) {
+          try {
+            const osc = ctx.createOscillator();
+            const gainNode = ctx.createGain();
+            const filterNode = ctx.createBiquadFilter();
+
+            const scaledGain = Math.max(0.0002, baseGain * masterVolume);
+
+            osc.type = waveType;
+            osc.frequency.setValueAtTime(freq, startTime);
+
+            filterNode.type = 'lowpass';
+            filterNode.frequency.setValueAtTime(filterFreq || 1200, startTime);
+
+            gainNode.gain.setValueAtTime(0.0001, startTime);
+            gainNode.gain.exponentialRampToValueAtTime(scaledGain, startTime + 0.14);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + duration + 0.55);
+
+            osc.connect(filterNode);
+            filterNode.connect(gainNode);
+            gainNode.connect(ctx.destination);
+
+            osc.start(startTime);
+            osc.stop(startTime + duration + 0.65);
+          } catch (e) {
+            // Ignore audio node errors
+          }
+        }
+
+        function scheduleNextSynthBar() {
+          if (!isMusicPlaying || !audioCtx || audioSourceMode !== 'builtin') return;
+
+          const track = BUILTIN_WEDDING_TRACKS[activeBuiltinTrackId] || BUILTIN_WEDDING_TRACKS.canon;
+          const step = track.steps[synthStepIndex % track.steps.length];
+          synthStepIndex += 1;
+          const now = audioCtx.currentTime;
+
+          step.chord.forEach(function (chordFreq) {
+            playGentleNote(audioCtx, chordFreq, now, step.dur, 0.028, track.chordWave, track.filterFreq);
+          });
+          playGentleNote(audioCtx, step.melody, now + 0.04, step.dur * 0.92, 0.055, track.melodyWave, track.filterFreq + 250);
+
+          synthLoopTimer = setTimeout(scheduleNextSynthBar, step.dur * 1000);
+        }
+
+        function stopSynthEngine() {
+          if (synthLoopTimer) {
+            clearTimeout(synthLoopTimer);
+            synthLoopTimer = null;
+          }
+        }
+
+        function stopBackgroundMusic(silent) {
+          stopSynthEngine();
+          if (customBgAudio) {
+            try {
+              customBgAudio.pause();
+            } catch (e) {
+              // Ignore
+            }
+          }
+          updateMusicPlayerUI(false);
+          if (!silent) {
+            showToast('Musik latar dijeda.');
+          }
+        }
+
+        function startBuiltinSynth(silent) {
+          try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) {
+              if (!silent) showToast('Browser Anda tidak mendukung pemutar audio bawaan.');
+              return;
+            }
+            if (!audioCtx) {
+              audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+            audioSourceMode = 'builtin';
+            updateMusicPlayerUI(true);
+            scheduleNextSynthBar();
+            if (!silent) {
+              const info = getCurrentTrackDisplayInfo();
+              showToast('Memutar: ' + info.fullTitle);
+            }
+          } catch (err) {
+            updateMusicPlayerUI(false);
+          }
+        }
+
+        function startBackgroundMusic(silent) {
+          stopSynthEngine();
+
+          // 1. Jika menggunakan File MP3 Lokal dari perangkat
+          if (audioSourceMode === 'local_file' && activeLocalObjectUrl && customBgAudio) {
+            try {
+              customBgAudio.src = activeLocalObjectUrl;
+              customBgAudio.volume = masterVolume;
+              const playPromise = customBgAudio.play();
+              if (playPromise && typeof playPromise.then === 'function') {
+                playPromise
+                  .then(function () {
+                    updateMusicPlayerUI(true);
+                    if (!silent) showToast('Memutar file lagu: ' + activeLocalFileName);
+                  })
+                  .catch(function () {
+                    audioSourceMode = 'builtin';
+                    startBuiltinSynth(silent);
+                    showToast('File audio tidak didukung browser, beralih ke instrumen bawaan.');
+                  });
+              } else {
+                updateMusicPlayerUI(true);
+              }
+              return;
+            } catch (e) {
+              audioSourceMode = 'builtin';
+            }
+          }
+
+          // 2. Jika menggunakan Link URL MP3 Kustom
+          if (audioSourceMode === 'custom_url' && activeCustomMp3Url && customBgAudio) {
+            try {
+              customBgAudio.src = activeCustomMp3Url;
+              customBgAudio.volume = masterVolume;
+              const playPromise = customBgAudio.play();
+              if (playPromise && typeof playPromise.then === 'function') {
+                playPromise
+                  .then(function () {
+                    updateMusicPlayerUI(true);
+                    if (!silent) showToast('Memutar lagu latar kustom...');
+                  })
+                  .catch(function () {
+                    audioSourceMode = 'builtin';
+                    activeCustomMp3Url = '';
+                    startBuiltinSynth(silent);
+                    showToast('Link MP3 gagal dimuat, beralih ke instrumen bawaan.');
+                  });
+              } else {
+                updateMusicPlayerUI(true);
+              }
+              return;
+            } catch (e) {
+              audioSourceMode = 'builtin';
+              activeCustomMp3Url = '';
+            }
+          }
+
+          // 3. Default: Instrumen Bawaan Web Audio API
+          startBuiltinSynth(silent);
+        }
+
+        // Inisialisasi tampilan label trek saat pertama dibuka
+        updateMusicPlayerUI(false);
+
+        // Smooth scroll & auto-start music pada tombol 'Buka Undangan'
+        const openBtn = document.getElementById('btn-buka-undangan');
+        const mainSection = document.getElementById('isi-undangan');
+        if (openBtn && mainSection) {
+          openBtn.addEventListener('click', function () {
+            mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (!isMusicPlaying) {
+              startBackgroundMusic(false);
+            }
+          });
+        }
+
+        // Tombol Play/Pause utama di pojok kanan bawah
+        if (musicToggleBtn) {
+          musicToggleBtn.addEventListener('click', function () {
+            if (isMusicPlaying) {
+              stopBackgroundMusic(false);
+            } else {
+              startBackgroundMusic(false);
+            }
+          });
+        }
+
+        // Tombol Play/Pause di dalam Popover Pengaturan
+        if (popoverPlayPauseBtn) {
+          popoverPlayPauseBtn.addEventListener('click', function () {
+            if (isMusicPlaying) {
+              stopBackgroundMusic(false);
+            } else {
+              startBackgroundMusic(false);
+            }
+          });
+        }
+
+        // Buka / Tutup Popover Pengaturan Musik
+        if (toggleMusicSettingsBtn && musicSettingsPopover) {
+          toggleMusicSettingsBtn.addEventListener('click', function () {
+            musicSettingsPopover.classList.toggle('hidden');
+          });
+        }
+
+        if (closeMusicSettingsBtn && musicSettingsPopover) {
+          closeMusicSettingsBtn.addEventListener('click', function () {
+            musicSettingsPopover.classList.add('hidden');
+          });
+        }
+
+        // Slider Pengatur Volume
+        if (volumeSlider) {
+          volumeSlider.addEventListener('input', function () {
+            const val = parseInt(volumeSlider.value, 10);
+            masterVolume = Math.max(0, Math.min(100, isNaN(val) ? 75 : val)) / 100;
+            if (volumeLabel) {
+              volumeLabel.textContent = Math.round(masterVolume * 100) + '%';
+            }
+            if (customBgAudio) {
+              try {
+                customBgAudio.volume = masterVolume;
+              } catch (e) {
+                // Ignore
+              }
+            }
+          });
+        }
+
+        // Pilihan 3 Trek Instrumen Bawaan
+        builtinTrackBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const trackId = btn.getAttribute('data-track-id');
+            if (!trackId || !BUILTIN_WEDDING_TRACKS[trackId]) return;
+
+            activeBuiltinTrackId = trackId;
+            audioSourceMode = 'builtin';
+            synthStepIndex = 0;
+
+            if (customBgAudio) {
+              try {
+                customBgAudio.pause();
+              } catch (e) {
+                // Ignore
+              }
+            }
+
+            try {
+              if (window.localStorage) {
+                window.localStorage.setItem(BUILTIN_TRACK_STORAGE_KEY, trackId);
+              }
+            } catch (e) {
+              // Ignore
+            }
+
+            startBackgroundMusic(false);
+          });
+        });
+
+        // Upload File Audio/MP3 Lokal dari Perangkat
+        if (localAudioFileInput) {
+          localAudioFileInput.addEventListener('change', function (event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            try {
+              if (activeLocalObjectUrl) {
+                URL.revokeObjectURL(activeLocalObjectUrl);
+              }
+              activeLocalObjectUrl = URL.createObjectURL(file);
+              activeLocalFileName = file.name;
+              audioSourceMode = 'local_file';
+
+              if (localFileLabelText) {
+                localFileLabelText.textContent = file.name;
+              }
+
+              startBackgroundMusic(false);
+            } catch (err) {
+              showToast('Gagal memuat file audio dari perangkat.');
+            }
+          });
+        }
+
+        // Terapkan Link URL MP3 Kustom
+        if (applyCustomMp3Btn && customMp3Input) {
+          applyCustomMp3Btn.addEventListener('click', function () {
+            const urlVal = customMp3Input.value.trim();
+            if (!urlVal) {
+              showToast('Masukkan link file .mp3 terlebih dahulu.');
+              return;
+            }
+            activeCustomMp3Url = urlVal;
+            audioSourceMode = 'custom_url';
+            try {
+              if (window.localStorage) {
+                window.localStorage.setItem(CUSTOM_MP3_STORAGE_KEY, activeCustomMp3Url);
+              }
+            } catch (e) {
+              // Ignore
+            }
+            startBackgroundMusic(false);
+          });
+        }
+
+        // Reset ke Instrumen Bawaan
+        if (resetBuiltinMusicBtn) {
+          resetBuiltinMusicBtn.addEventListener('click', function () {
+            activeCustomMp3Url = '';
+            audioSourceMode = 'builtin';
+            synthStepIndex = 0;
+
+            if (customMp3Input) customMp3Input.value = '';
+            if (localAudioFileInput) localAudioFileInput.value = '';
+            if (localFileLabelText) localFileLabelText.textContent = 'Pilih File Lagu dari Perangkat...';
+
+            if (activeLocalObjectUrl) {
+              try {
+                URL.revokeObjectURL(activeLocalObjectUrl);
+              } catch (e) {
+                // Ignore
+              }
+              activeLocalObjectUrl = '';
+              activeLocalFileName = '';
+            }
+
+            try {
+              if (window.localStorage) {
+                window.localStorage.removeItem(CUSTOM_MP3_STORAGE_KEY);
+              }
+            } catch (e) {
+              // Ignore
+            }
+
+            if (customBgAudio) {
+              try {
+                customBgAudio.pause();
+                customBgAudio.removeAttribute('src');
+              } catch (e) {
+                // Ignore
+              }
+            }
+
+            startBackgroundMusic(false);
+          });
+        }
+
+        // -----------------------------------------------------------------
+        // 6. RSVP & WISHES INTERACTIVE STATE (SAFE LOCALSTORAGE + MEMORY FALLBACK)
+        // -----------------------------------------------------------------
+        const STORAGE_KEY = 'undangan_raka_reva_wishes_v1';
+        const defaultWishes = [
+          {
+            name: 'Keluarga H. Ahmad & Hj. Dewi',
+            attendance: 'Hadir Walimatul Ursy & Akad Nikah',
+            wish: 'Barakallahu lakuma wa baraka \'alaikuma wa jama\'a bainakuma fi khair. Semoga Raka dan Reva menjadi keluarga sakinah, mawaddah, warahmah.',
+            time: 'Baru saja'
+          },
+          {
+            name: 'Nadia Kusuma & Keluarga',
+            attendance: 'Hadir Walimatul Ursy (29 Nov)',
+            wish: 'Selamat menempuh hidup baru Raka & Reva! Semoga dilancarkan seluruh rangkaian acara hingga hari H dan langgeng selamanya.',
+            time: '15 menit lalu'
+          },
+          {
+            name: 'Fajar Ramadhan',
+            attendance: 'Mendoakan dari Jauh',
+            wish: 'Turut berbahagia atas pernikahan Raka dan Reva. Semoga Allah SWT menganugerahkan keberkahan, cinta kasih, dan kebahagiaan yang abadi.',
+            time: '1 jam lalu'
+          }
+        ];
+
+        function loadWishes() {
+          try {
+            if (window.localStorage) {
+              const raw = window.localStorage.getItem(STORAGE_KEY);
+              if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                  return parsed;
+                }
+              }
+            }
+          } catch (e) {
+            // Fallback to in-memory defaultWishes
+          }
+          return defaultWishes.slice();
+        }
+
+        function saveWishes(list) {
+          try {
+            if (window.localStorage) {
+              window.localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            }
+          } catch (e) {
+            // Ignore blocked storage in sandboxed iframes
+          }
+        }
+
+        const wishesState = loadWishes();
+        const wishesListEl = document.getElementById('wishes-list');
+        const wishesCountEl = document.getElementById('wishes-count');
+        const rsvpForm = document.getElementById('rsvp-form');
+        const formErrorEl = document.getElementById('form-error');
+
+        function escapeHtml(str) {
+          return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+
+        function renderWishes() {
+          if (!wishesListEl) return;
+          if (wishesCountEl) {
+            wishesCountEl.textContent = String(wishesState.length);
+          }
+
+          if (wishesState.length === 0) {
+            wishesListEl.innerHTML = '<p class="text-sm text-muted text-center py-8">Belum ada ucapan. Jadilah yang pertama mengirimkan doa restu.</p>';
+            return;
+          }
+
+          wishesListEl.innerHTML = wishesState
+            .map(function (item) {
+              return (
+                '<div class="bg-creamDark/65 border border-gold/35 rounded-2xl p-4 transition">' +
+                  '<div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">' +
+                    '<strong class="font-serif text-lg font-bold text-charcoal">' + escapeHtml(item.name) + '</strong>' +
+                    '<span class="text-[11px] text-muted">' + escapeHtml(item.time) + '</span>' +
+                  '</div>' +
+                  '<span class="inline-block text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-terracotta/12 text-terracottaDark mb-2">' +
+                    escapeHtml(item.attendance) +
+                  '</span>' +
+                  '<p class="text-xs sm:text-sm text-charcoal/90 leading-relaxed">' +
+                    '“' + escapeHtml(item.wish) + '”' +
+                  '</p>' +
+                '</div>'
+              );
+            })
+            .join('');
+        }
+
+        if (rsvpForm) {
+          rsvpForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('guest-name');
+            const attendanceSelect = document.getElementById('guest-attendance');
+            const wishInput = document.getElementById('guest-wish');
+
+            const nameVal = nameInput ? nameInput.value.trim() : '';
+            const attendanceVal = attendanceSelect ? attendanceSelect.value : 'Hadir';
+            const wishVal = wishInput ? wishInput.value.trim() : '';
+
+            if (!nameVal || !wishVal) {
+              if (formErrorEl) {
+                formErrorEl.textContent = 'Mohon lengkapi nama lengkap serta ucapan dan doa restu terlebih dahulu.';
+                formErrorEl.classList.remove('hidden');
+              }
+              return;
+            }
+
+            if (formErrorEl) {
+              formErrorEl.classList.add('hidden');
+              formErrorEl.textContent = '';
+            }
+
+            wishesState.unshift({
+              name: nameVal,
+              attendance: attendanceVal,
+              wish: wishVal,
+              time: 'Baru saja dikirim'
+            });
+
+            saveWishes(wishesState);
+            renderWishes();
+            rsvpForm.reset();
+            showToast('Terima kasih! Ucapan & doa restu Anda telah terkirim.');
+          });
+        }
+
+        renderWishes();
+
+        // -----------------------------------------------------------------
+        // 7. SCROLL REVEAL OBSERVER
+        // -----------------------------------------------------------------
+        const revealEls = document.querySelectorAll('.reveal-item');
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08 }
+          );
+          revealEls.forEach(function (el) {
+            observer.observe(el);
+          });
+        } else {
+          revealEls.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initUndanganApp);
+      } else {
+        initUndanganApp();
+      }
+    })();
+  </script>
+</body>
+</html>
